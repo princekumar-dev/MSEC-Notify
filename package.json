@@ -1,0 +1,19 @@
+{
+  "name": "msec-parent-connect",
+  "version": "1.0.0",
+  "description": "MSEC Parent Connect - Connecting Teachers and Parents Through Smart Communication",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:full": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm --prefix backend run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix client run build",
+    "start": "npm --prefix backend start",
+    "install:all": "npm install && npm --prefix backend install && npm --prefix client install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": ["msec", "parent-connect", "whatsapp", "attendance"],
+  "license": "MIT"
+}

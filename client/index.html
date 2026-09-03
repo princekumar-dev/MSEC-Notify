@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/images/mseclogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="description" content="MSEC Notify - Leave & Late Attendance Instant Parent Alert System" />
+    <title>MSEC Notify - Leave & Late Attendance Parent Alert System</title>
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <style>
+      .wave-text {
+        background: linear-gradient(
+          110deg,
+          #047857 0%,
+          #059669 30%,
+          #34d399 42%,
+          #ffffff 50%,
+          #6ee7b7 58%,
+          #059669 70%,
+          #047857 100%
+        ) !important;
+        background-size: 200% 100% !important;
+        -webkit-background-clip: text !important;
+        background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        color: transparent !important;
+        animation: shimmer-wave 2.2s linear infinite !important;
+        display: inline-block !important;
+        font-weight: 800 !important;
+        padding-right: 10px !important;
+        padding-bottom: 2px !important;
+        box-sizing: content-box !important;
+        line-height: normal !important;
+        will-change: background-position !important;
+      }
+      .wave-text:hover {
+        animation-duration: 1.2s !important;
+        filter: brightness(1.2) drop-shadow(0 0 8px rgba(52, 211, 153, 0.5));
+      }
+      @keyframes shimmer-wave {
+        0% { background-position: 150% 0; }
+        100% { background-position: -150% 0; }
+      }
+      @keyframes wave-animation {
+        0% { background-position: 150% 0; }
+        100% { background-position: -150% 0; }
+      }
+    </style>
+  </head>
+  <body class="bg-[#F0FDF9] text-slate-900 antialiased selection:bg-emerald-500 selection:text-white">
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "msec-parent-connect-backend",
+  "version": "1.0.0",
+  "description": "MSEC Parent Connect Backend",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.16",
+    "compression": "^1.7.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5",
+    "multer": "^1.4.5-lts.1",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.1",
+    "uuid": "^11.0.5",
+    "winston": "^3.17.0",
+    "xlsx": "^0.18.5"
+  }
+}
