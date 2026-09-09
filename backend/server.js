@@ -7,6 +7,7 @@ import net from 'net';
 import { Server as SocketIO } from 'socket.io';
 import cors from 'cors';
 import compression from 'compression';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -60,10 +61,30 @@ app.get('/api/health', (req, res) => {
 });
 
 const clientDistPath = path.join(__dirname, '..', 'client', 'dist');
-app.use(express.static(clientDistPath));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(clientDistPath, 'index.html'));
-});
+const indexPath = path.join(clientDistPath, 'index.html');
+
+if (fs.existsSync(indexPath)) {
+  app.use(express.static(clientDistPath));
+  app.get('*', (req, res) => {
+    res.sendFile(indexPath);
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.json({
+      success: true,
+      message: 'MSEC Parent Connect Backend API is active',
+      version: '1.0.0',
+      timestamp: new Date().toISOString(),
+    });
+  });
+
+  app.use('*', (req, res) => {
+    res.status(404).json({
+      success: false,
+      message: `API route not found: ${req.originalUrl}`,
+    });
+  });
+}
 
 app.use(errorHandler);
 
