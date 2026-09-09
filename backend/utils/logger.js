@@ -20,31 +20,33 @@ const consoleFormat = winston.format.combine(
   })
 );
 
+import fs from 'fs';
+
+const logsDir = path.join(__dirname, '..', 'logs');
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir, { recursive: true });
+}
+
 const logger = winston.createLogger({
   level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
   format: logFormat,
   defaultMeta: { service: 'msec-parent-connect' },
   transports: [
+    new winston.transports.Console({
+      format: consoleFormat,
+    }),
     new winston.transports.File({
-      filename: path.join(__dirname, '..', 'logs', 'error.log'),
+      filename: path.join(logsDir, 'error.log'),
       level: 'error',
       maxsize: 5242880,
       maxFiles: 5,
     }),
     new winston.transports.File({
-      filename: path.join(__dirname, '..', 'logs', 'combined.log'),
+      filename: path.join(logsDir, 'combined.log'),
       maxsize: 5242880,
       maxFiles: 5,
     }),
   ],
 });
-
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(
-    new winston.transports.Console({
-      format: consoleFormat,
-    })
-  );
-}
 
 export default logger;
